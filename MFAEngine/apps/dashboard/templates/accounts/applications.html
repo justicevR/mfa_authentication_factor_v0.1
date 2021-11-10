@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Applications</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Name</th>
+							<th>Domain</th>
+							<th>Organization</th>
+							<th>Action</th>
+							<th>Status</th>
+							
+						</tr>
+
+						{% for i in applications %}
+							<tr>
+								<td>{{i.name_of_app}}</td>
+								<td>{{i.domain}}</td>
+								<td>{{i.org_name}}</td>
+								<td><a href="{% url 'details' i.id %}" class="btn btn-info" >View</a></td>
+								<td>
+									{% if i.status == 1 %}
+										<span class="alert alert-success">Approved</span>
+									{% elif i.status == 2 %}
+										<span class="alert alert-danger">Rejected</span>
+									{% else %}
+										<span class="alert alert-info">Pending</span>
+									{% endif %}
+								</td>
+								
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

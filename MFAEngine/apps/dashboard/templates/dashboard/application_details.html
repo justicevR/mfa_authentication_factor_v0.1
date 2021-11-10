@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h2>Application's Details</h2>
+<form>
+    {% for field in application_details_form %}
+        <p>
+            {{field.label_tag}}
+            {{field}}
+        </p>
+    {% endfor %}
+    {% if app.status == 0 %}
+    <a href="{% url 'invite' i.id %}" class="btn btn-success" >Approve</a>
+    <a class="btn btn-danger" href="{% url 'reject' i.id %}" >Reject</a>
+    {% elif app.status == 1 %}
+    <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Approved</button>
+    {% else %}
+    <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+    {% endif %}
+
+</form>
+
+
+
+{% endblock content %}

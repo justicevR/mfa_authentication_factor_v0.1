@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h2>Register Your App</h2>
+<form method="POST">
+    {% csrf_token %}
+    {% for field in invite_app_form %}
+        <p>
+            {{field.label_tag}}
+            {{field}}
+
+            {% if field.help_text %}
+                <small style="color:grey;">{{field.help_text}}</small>
+            {% endif %}
+
+            {% for error in fields.errors %}
+                <p style="color: red;">{{error}}</p>
+
+            {% endfor %}
+
+            {% if invite_app_form.non_field_errors %}
+                <div style= "color:red;">
+                    <p>{{invite_app_form.non_field_errors}}</p>
+                </div>
+            {% endif %}
+        </p>
+
+
+    {% endfor %}
+    
+    <button type="submit">Done</button>
+</form>
+
+
+
+{% endblock content %}

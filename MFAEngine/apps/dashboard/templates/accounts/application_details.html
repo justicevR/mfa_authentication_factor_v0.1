@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h2>Your Application Details</h2>
+<form>
+    {% for field in application_details_form %}
+        <p>
+            {{field.label_tag}}
+            {{field}}
+        </p>
+
+
+    {% endfor %}
+</form>
+
+
+
+{% endblock content %}

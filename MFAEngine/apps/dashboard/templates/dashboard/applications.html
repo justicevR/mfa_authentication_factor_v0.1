@@ -1,0 +1,53 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+{% include 'status.html' %}
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Applications</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Name</th>
+							<th>Domain</th>
+							<th>Organization</th>
+                            <th>Requester</th>
+							<th>Requested on</th>
+                            <th>Action</th>
+						</tr>
+
+						{% for i in applications %}
+							<tr>
+								<td>{{i.name_of_app}}</td>
+								<td>{{i.domain}}</td>
+								<td>{{i.org_name}}</td>
+                                <td>{{i.developer.email}}</td>
+								<td>{{i.date_requested}}</td>
+                                <!-- <td><a class="btn btn-sm btn-info" href="{% url 'invite' i.id %}">Register</a></td> -->
+								<td>
+									<a href="{% url 'detailsAdmin' i.id %}" class="btn btn-info" >View</a>
+									{% if i.status == 0 %}
+									<a href="{% url 'invite' i.id %}" class="btn btn-success" >Approve</a>
+									<a class="btn btn-danger" href="{% url 'reject' i.id %}" >Reject</a>
+									{% elif i.status == 1 %}
+									<button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Approved</button>
+									{% else %}
+									<button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+									{% endif %}
+								</td>
+                                
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}
