@@ -95,7 +95,7 @@ urlpatterns = [
     path('applications',service_views.applicationsAdmin_view, name='view_apps'),
 
     #api usage
-    path('api_usage/', include('request_viewer.urls')),
+    
     
     #api health
     #enrollment validation L

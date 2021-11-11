@@ -50,8 +50,7 @@ INSTALLED_APPS = [
     'apps.management',
     'apps.self_service',
     'apps.factors',
-    'apps.dashboard',
-    'request_viewer',
+    'apps.dashboard'
     
 ]
 
@@ -64,16 +63,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'request_viewer.middleware.RequestViewerMiddleware',
+    
     
 ]
-
-REQUEST_VIEWER={
-    "LIVE_MONITORING": True,
-    "WHITELISTED_PATHS": ['admin/']
-}
-
-
 
 
 

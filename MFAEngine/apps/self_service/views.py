@@ -12,7 +12,7 @@ from ..dashboard import decorators as dash_decorators
 @login_required(login_url='login')
 def profile_view(request):
 
-    return render(request, 'profile.html',)
+    return render(request, 'accounts/profile.html',)
     
 	
 #@dash_decorators.admin_only
@@ -32,7 +32,7 @@ def registerApp_view(request):
     else:
         form = RegisterAppForm()
         context['Request_registration_form'] = form   
-    return render(request, 'register_app.html', context)
+    return render(request, 'accounts/register_app.html', context)
 
 
 @login_required(login_url='login')
@@ -53,7 +53,7 @@ def appSummary_view(request):
     'registered_apps':registered_apps, 'pending_apps':pending_apps, 'rejected_apps':rejected_apps}
 
     print(applications)
-    return render(request, 'profile.html', context)
+    return render(request, 'accounts/profile.html', context)
 
 
 @login_required(login_url='login')

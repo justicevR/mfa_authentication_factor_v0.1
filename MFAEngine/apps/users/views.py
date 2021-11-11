@@ -33,7 +33,7 @@ def registration_view(request):
     else:
         form = RegistrationForm()
         context['registration_form']= form
-    return render(request, 'register.html', context)
+    return render(request, 'accounts/register.html', context)
 
 
 
@@ -66,7 +66,7 @@ def login_view(request):
         form = AccountAuthenticationForm
 
     context['login_form'] = form
-    return render(request, 'login.html', context)
+    return render(request, 'accounts/login.html', context)
 
 
 
