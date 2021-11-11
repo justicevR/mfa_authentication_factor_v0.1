@@ -27,7 +27,7 @@ def registerApp_view(request):
         form = RegisterAppForm(request.POST, instance=application)
         if form.is_valid():
             form.save()
-            return render(request, 'home.html')
+            return render(request, 'dashboard/home.html')
 
     else:
         form = RegisterAppForm()
@@ -141,7 +141,7 @@ def inviteApp_view(request, pk):
     
 
     context['invite_app_form'] = form   
-    return render(request, 'invite_app.html', context)
+    return render(request, 'accounts/invite_app.html', context)
 
 
 
