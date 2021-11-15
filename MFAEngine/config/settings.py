@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'apps.management',
     'apps.self_service',
     'apps.factors',
-    'apps.dashboard'
-    
+    'apps.dashboard',
+    'drf_api_logger',  #  Add here
 ]
 
 MIDDLEWARE = [
@@ -63,10 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware', # Add here
     
 ]
 
+DRF_API_LOGGER_DATABASE = True  # Default to False
 
 
 ROOT_URLCONF = 'config.urls'
