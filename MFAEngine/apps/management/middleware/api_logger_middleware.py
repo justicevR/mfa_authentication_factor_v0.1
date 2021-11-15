@@ -5,9 +5,9 @@ from django.conf import settings
 from django.urls import resolve
 from django.utils import timezone
 
-from management import API_LOGGER_SIGNAL
-from management.start_logger_when_server_starts import LOGGER_THREAD
-from management.utils import get_headers, get_client_ip, mask_sensitive_data
+from apps.management import API_LOGGER_SIGNAL
+from apps.management.start_logger_when_server_starts import LOGGER_THREAD
+from apps.management.utils import get_headers, get_client_ip, mask_sensitive_data
 
 """
 File: api_logger_middleware.py

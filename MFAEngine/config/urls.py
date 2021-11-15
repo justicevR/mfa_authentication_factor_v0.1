@@ -109,15 +109,6 @@ urlpatterns = [
     path('api/users/email/disable', views.enrollDel),
     path('api/users/email/fetch', views.enrollFetch),
     
-
-
-
-    
-
-
-
-
-
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
