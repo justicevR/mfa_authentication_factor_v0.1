@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'apps.self_service',
     'apps.factors',
     'apps.dashboard',
-    'drf_api_logger',  #  Add here
+    #'drf_api_logger',  
 ]
 
 MIDDLEWARE = [
@@ -63,11 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware', # Add here
+   # 'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware', 
     
 ]
 
-DRF_API_LOGGER_DATABASE = True  # Default to False
+#DRF_API_LOGGER_DATABASE = True  # Default to False
 
 
 ROOT_URLCONF = 'config.urls'
@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mfas_db',
+        'NAME': 'mfas_db1',
         'USER': 'mfas_admin',
         'PASSWORD': '',
         'HOST': 'localhost',
