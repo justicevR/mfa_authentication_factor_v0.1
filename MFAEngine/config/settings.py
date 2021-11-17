@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'apps.self_service',
     'apps.factors',
     'apps.dashboard',
-    #'drf_api_logger',  
+
 ]
 
 MIDDLEWARE = [
@@ -63,11 +63,30 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-   # 'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware', 
+    'apps.management.middleware.ActivityLogMiddleware',
     
 ]
 
-#DRF_API_LOGGER_DATABASE = True  # Default to False
+import os
+
+# Database
+# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.path.join(BASE_DIR, 'postgresql_psycopg2'),
+    },
+    # LOG
+    'logs': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.path.join(BASE_DIR, 'logs.postgresql_psycopg2'),
+    }
+}
+
+DATABASE_ROUTERS = ['apps.management.router.DatabaseAppsRouter']  # LOG
+DATABASE_APPS_MAPPING = {'apps.management': 'logs'}  # LOG
+
 
 
 ROOT_URLCONF = 'config.urls'
@@ -98,7 +117,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mfas_db1',
+        'NAME': 'mfas_admin1',
         'USER': 'mfas_admin',
         'PASSWORD': '',
         'HOST': 'localhost',
